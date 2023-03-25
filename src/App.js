@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Recorder from "components/Recorder";
+import Result from "components/Result";
+import recognizeMusic from "services/recognizeMusic";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [currentResult, setCurrentResult] = useState({});
+  const [showCurrentResult, setShowCurrentResult] = useState(false);
+
+  const handleBlobRecord = async (blob) => {
+    const result = await recognizeMusic.getInfo(blob);
+    setCurrentResult(result);
+    setShowCurrentResult(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {!showCurrentResult && <Recorder handleBlobRecord={handleBlobRecord} />}
+      {showCurrentResult && <Result result={currentResult} />}
     </div>
   );
-}
+};
 
 export default App;
