@@ -1,6 +1,5 @@
 const Result = ({ result }) => {
-  console.log(result);
-  const { album, artists, title, release_date } = result.metadata?.music[0];
+  const { album, artists, title, release_date } = result?.music[0];
   return (
     <div className="resultBlock">
       <h1>{title}</h1>
