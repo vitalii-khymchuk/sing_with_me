@@ -1,8 +1,12 @@
-import { Container } from "@chakra-ui/react";
-import NavBar from "modules/NavBar";
+import Recorder from "modules/index";
 
 const Search = () => {
-  return <h2>azzzzazazzzazazazazzaazaazzazaazza</h2>;
+  return (
+    <>
+      <h2>azzzzazazzzazazazazzaazaazzazaazza</h2>
+      <Recorder />
+    </>
+  );
 };
 
 export default Search;
