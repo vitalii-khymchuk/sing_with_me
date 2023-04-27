@@ -1,0 +1,1 @@
+export { SoundRecorder } from "./SoundRecorder";
