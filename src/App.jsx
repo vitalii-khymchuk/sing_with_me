@@ -1,8 +1,6 @@
 import "./App.css";
-import Recorder from "components/Recorder";
 import Result from "components/Result";
 import GoogleLogIn from "components/GoogleLogIn";
-import recognizeMusic from "services/recognizeMusic";
 import { useState } from "react";
 import axios from "axios";
 import { Heading } from "@chakra-ui/react";
