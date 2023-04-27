@@ -1,7 +1,8 @@
 import { Tabs, TabList } from "@chakra-ui/react";
 import { NavLink } from "../NavLink";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const SITE_PAGES = [
   { name: "Search", url: "/", index: 0 },
@@ -13,10 +14,12 @@ const SITE_PAGES = [
 const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(() => {
+  const [tabIndex, setTabIndex] = useState(0);
+
+  useEffect(() => {
     const { index } = SITE_PAGES.find(({ url }) => url === location.pathname);
     setTabIndex(index);
-  });
+  }, [location.pathname]);
 
   const handleTabsChange = (tabIndex) => {
     const { url } = SITE_PAGES.find(({ index }) => index === tabIndex);
