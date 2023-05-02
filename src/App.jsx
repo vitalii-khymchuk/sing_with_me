@@ -2,6 +2,7 @@ import { Search } from "pages/Search/";
 import { Account } from "pages/Account";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PrivateRoute } from "PrivateRoute";
 
 const router = createBrowserRouter(
   [
