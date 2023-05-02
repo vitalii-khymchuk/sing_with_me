@@ -53,6 +53,12 @@ const theme = extendTheme({
         },
         overflowX: "hidden",
       },
+      "button:hover, button:focus": {
+        bg: "rgba(255, 255, 255, 0.2)",
+      },
+      "button:active": {
+        bg: "transparent",
+      },
     },
   },
   components: {

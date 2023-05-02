@@ -1,13 +1,10 @@
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-// import { useDispatch } from "react-redux";
-// import { signInWithGoogle } from 'redux/auth/authOperations';
+import { useAuthStore, signInSelector } from "modules/Authorization/store";
 
 const GoogleLogIn = () => {
-  // const dispatch = useDispatch();
-
+  const signIn = useAuthStore(signInSelector);
   const handleSuccess = (response) => {
-    console.log("response", response);
-    // dispatch(signInWithGoogle(response));
+    signIn(response);
   };
 
   const handleFailure = (error) => {
@@ -33,4 +30,4 @@ const GoogleLogIn = () => {
   );
 };
 
-export default GoogleLogIn;
+export { GoogleLogIn };

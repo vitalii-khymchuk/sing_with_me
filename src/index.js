@@ -9,12 +9,10 @@ import { PersistGate } from "zustand-persist";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/">
-      <PersistGate>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </PersistGate>
-    </BrowserRouter>
+    {/* <PersistGate> */}
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
+    {/* </PersistGate> */}
   </React.StrictMode>
 );
