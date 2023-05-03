@@ -6,4 +6,5 @@ export {
   isErrorSelector,
   resultsSelector,
   resetResultsSelector,
+  setResultsManuallySelector,
 } from "./store/selectors";

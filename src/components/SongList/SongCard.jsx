@@ -40,9 +40,7 @@ const SongCard = ({
           </Heading>
         </CardBody>
         <CardFooter p="0.3rem" mt="0">
-          <Text color={"gray.600"}>
-            Release date: {release_date_for_display ?? "not available"}
-          </Text>
+          <Text color={"gray.600"}>{release_date_for_display}</Text>
         </CardFooter>
       </Stack>
     </Card>

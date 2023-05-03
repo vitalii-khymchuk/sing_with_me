@@ -1,8 +1,12 @@
 import { Search } from "pages/Search/";
 import { Account } from "pages/Account";
+import { History } from "pages/History";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
+import { useAuthStore, tokenSelector } from "modules/Authorization";
+import { useEffect } from "react";
+import { setBearer } from "config/axiosConfig";
 
 const router = createBrowserRouter(
   [
@@ -23,7 +27,9 @@ const router = createBrowserRouter(
         },
         {
           path: "/history",
-          element: "history",
+          element: (
+            <PrivateRoute component={<History />} redirectTo="/account" />
+          ),
           loader: null,
         },
         {
@@ -40,6 +46,13 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
+  const token = useAuthStore(tokenSelector);
+  useEffect(() => {
+    console.log(token);
+    if (token) {
+      setBearer(token);
+    }
+  }, [token]);
   return <RouterProvider router={router} />;
 };
 

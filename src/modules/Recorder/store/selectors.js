@@ -4,6 +4,7 @@ const isErrorSelector = (state) => state.isError;
 const searchByRecSelector = (state) => state.searchByRec;
 const searchByTextSelector = (state) => state.searchByText;
 const resetResultsSelector = (state) => state.resetResults;
+const setResultsManuallySelector = (state) => state.setResultsManually;
 export {
   resultsSelector,
   isLoadingSelector,
@@ -11,4 +12,5 @@ export {
   searchByRecSelector,
   searchByTextSelector,
   resetResultsSelector,
+  setResultsManuallySelector,
 };

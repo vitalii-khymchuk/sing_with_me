@@ -13,7 +13,7 @@ const Results = ({ results, resetResults }) => {
       )}
       {results && slicedResults.length > 1 && (
         <Box py="0.7rem">
-          <SongList songs={slicedResults} />
+          <SongList songs={slicedResults} footerText="Release date:" />
         </Box>
       )}
     </>

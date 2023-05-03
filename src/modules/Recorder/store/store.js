@@ -42,7 +42,7 @@ const useSearchStore = create(
           };
           await queryHandler(set, searchByRec);
         },
-        async searchByText(text) {
+        searchByText: async (text) => {
           const searchByText = async () => {
             const { data } = await searchByTextQuery(text);
             set((state) => {
@@ -50,6 +50,11 @@ const useSearchStore = create(
             });
           };
           await queryHandler(set, searchByText);
+        },
+        setResultsManually: (results) => {
+          set((state) => {
+            state.results = results;
+          });
         },
       };
     })
