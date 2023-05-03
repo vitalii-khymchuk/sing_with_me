@@ -1,6 +1,7 @@
 import { Search } from "pages/Search/";
 import { Account } from "pages/Account";
 import { History } from "pages/History";
+import { Saved } from "pages/Saved";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
@@ -22,7 +23,7 @@ const router = createBrowserRouter(
         },
         {
           path: "/library",
-          element: "library",
+          element: <PrivateRoute component={<Saved />} redirectTo="/account" />,
           loader: null,
         },
         {
@@ -48,7 +49,6 @@ const router = createBrowserRouter(
 const App = () => {
   const token = useAuthStore(tokenSelector);
   useEffect(() => {
-    console.log(token);
     if (token) {
       setBearer(token);
     }
