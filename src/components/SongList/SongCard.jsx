@@ -9,14 +9,30 @@ import {
 } from "@chakra-ui/react";
 
 const SongCard = ({
-  song: { full_title, header_image_thumbnail_url, release_date_for_display },
+  song: {
+    full_title,
+    header_image_thumbnail_url,
+    release_date_for_display,
+    id,
+  },
+  onCardClick,
 }) => {
+  const onCardClickHandler = () => {
+    onCardClick(id);
+  };
   return (
     <Card
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
       variant="outline"
       h="7rem"
+      _hover={{
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+      }}
+      _focus={{
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+      }}
+      onClick={onCardClickHandler}
     >
       <Image
         objectFit="cover"
