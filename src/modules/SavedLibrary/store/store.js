@@ -55,7 +55,7 @@ const useSavedLibStore = create(
 
         removeFromSaved: async (id) => {
           const removeFromSaved = async () => {
-            await deleteSavedQuery();
+            await deleteSavedQuery(id);
             set((state) => {
               state.savedSongs = state.savedSongs.filter(
                 (item) => item.id !== id

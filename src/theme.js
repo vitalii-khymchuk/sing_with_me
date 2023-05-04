@@ -24,11 +24,20 @@ const Heading = defineStyleConfig({
   },
 });
 
-// const Container = defineStyleConfig({
-//   baseStyle: {
-//     overflowX: "hidden",
-//   },
-// });
+const Button = defineStyleConfig({
+  baseStyle: {
+    "button&:active, button&[data-active]": {
+      background: "transparent",
+    },
+    "button&:hover, button&[data-hover]": {
+      background: "rgba(255, 255, 255, 0.2)",
+    },
+    "button&:focus, button&[data-focus]": {
+      background: "transparent",
+      border: "1px solid rgba(255, 255, 255, 0.2)",
+    },
+  },
+});
 
 const theme = extendTheme({
   breakpoints: {
@@ -56,13 +65,14 @@ const theme = extendTheme({
       "button:hover, button:focus": {
         bg: "rgba(255, 255, 255, 0.2)",
       },
-      "button:active": {
-        bg: "transparent",
-      },
+      // "button:active": {
+      //   bg: "transparent",
+      // },
     },
   },
   components: {
     Heading,
+    Button,
   },
 });
 
