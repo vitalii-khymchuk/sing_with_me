@@ -5,7 +5,12 @@ import { Saved } from "pages/Saved";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
-import { useAuthStore, tokenSelector } from "modules/Authorization";
+import {
+  useAuthStore,
+  tokenSelector,
+  getCurrentSelector,
+  isLoggedInSelector,
+} from "modules/Authorization";
 import { useEffect } from "react";
 import { setBearer } from "config/axiosConfig";
 
@@ -47,12 +52,20 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
+  const isLoggedIn = useAuthStore(isLoggedInSelector);
+  const getCurrent = useAuthStore(getCurrentSelector);
   const token = useAuthStore(tokenSelector);
   useEffect(() => {
     if (token) {
       setBearer(token);
     }
   }, [token]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getCurrent();
+    }
+  }, [getCurrent, isLoggedIn]);
   return <RouterProvider router={router} />;
 };
 

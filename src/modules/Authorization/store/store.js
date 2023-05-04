@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { signInQuery, signOutQuery } from "../api/authAPI";
+import { signInQuery, signOutQuery, getCurrentQuery } from "../api/authAPI";
 import { configurePersist } from "zustand-persist";
 import { immer } from "zustand/middleware/immer";
 import { devtools } from "zustand/middleware";
@@ -50,7 +50,7 @@ const useAuthStore = create(
           },
           signOut: async () => {
             const signOut = async () => {
-              await signOutQuery();
+              signOutQuery();
               set((state) => {
                 state.token = null;
                 state.userData = null;
@@ -58,6 +58,27 @@ const useAuthStore = create(
               });
             };
             queryHandler(set, signOut);
+          },
+
+          getCurrent: async () => {
+            try {
+              const { data } = await getCurrentQuery();
+              set((state) => {
+                state.userData = data;
+              });
+            } catch (error) {
+              console.log(error);
+              if (error.response.status === 401) {
+                set((state) => {
+                  state.token = null;
+                  state.userData = null;
+                  state.isLoggedIn = false;
+                });
+              }
+              set((state) => {
+                state.isError = error.message;
+              });
+            }
           },
         };
       })

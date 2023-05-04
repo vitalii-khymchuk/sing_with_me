@@ -5,5 +5,6 @@ export {
   tokenSelector,
   signOutSelector,
   signInSelector,
+  getCurrentSelector,
   useAuthStore,
 } from "./store";

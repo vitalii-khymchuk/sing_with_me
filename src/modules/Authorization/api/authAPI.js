@@ -13,4 +13,9 @@ const signOutQuery = async () => {
   return Promise.resolve();
 };
 
-export { signInQuery, signOutQuery };
+const getCurrentQuery = async () => {
+  const { data } = await axiosClient.get("/auth/current");
+  return data;
+};
+
+export { signInQuery, signOutQuery, getCurrentQuery };

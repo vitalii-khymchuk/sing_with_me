@@ -4,6 +4,7 @@ const tokenSelector = (state) => state.token;
 
 const signInSelector = (state) => state.signIn;
 const signOutSelector = (state) => state.signOut;
+const getCurrentSelector = (state) => state.getCurrent;
 
 export {
   isLoggedInSelector,
@@ -11,4 +12,5 @@ export {
   tokenSelector,
   signInSelector,
   signOutSelector,
+  getCurrentSelector,
 };
