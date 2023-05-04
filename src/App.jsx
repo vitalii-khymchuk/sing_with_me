@@ -2,6 +2,7 @@ import { Search } from "pages/Search/";
 import { Account } from "pages/Account";
 import { History } from "pages/History";
 import { Saved } from "pages/Saved";
+import { Details } from "pages/Details";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
@@ -41,6 +42,11 @@ const router = createBrowserRouter(
         {
           path: "/account",
           element: <Account />,
+          loader: null,
+        },
+        {
+          path: "/details/:id",
+          element: <Details />,
           loader: null,
         },
       ],

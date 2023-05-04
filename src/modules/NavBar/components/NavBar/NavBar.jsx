@@ -9,6 +9,7 @@ const SITE_PAGES = [
   { name: "Library", url: "/library", index: 1 },
   { name: "History", url: "/history", index: 2 },
   { name: "Account", url: "/account", index: 3 },
+  { name: "", url: "", index: 4 },
 ];
 
 const NavBar = () => {
@@ -17,8 +18,12 @@ const NavBar = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
-    const { index } = SITE_PAGES.find(({ url }) => url === location.pathname);
-    setTabIndex(index);
+    const page = SITE_PAGES.find(({ url }) => url === location.pathname);
+    if (page) {
+      setTabIndex(page.index);
+    } else {
+      setTabIndex(4);
+    }
   }, [location.pathname]);
 
   const handleTabsChange = (tabIndex) => {
