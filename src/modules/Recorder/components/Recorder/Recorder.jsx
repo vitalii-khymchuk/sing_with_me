@@ -72,22 +72,17 @@ const Recorder = () => {
       _hover={{
         boxShadow: "0px 0px 2px 2px rgba(0, 0, 0, 0.6)",
         transform: "scale(0.98)",
-
-        bgImage:
-          "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
+        bg: "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
       }}
       _focus={{
         boxShadow: "0px 0px 2px 2px rgba(0, 0, 0, 0.6)",
         transform: "scale(0.98)",
-
-        bgGradient:
-          "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
+        bg: "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
       }}
       _active={{
         boxShadow: "0px 0px 4px 4px rgb(193, 4, 192)",
         transform: "scale(0.97)",
-        bgGradient:
-          "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
+        bg: "radial-gradient(circle, rgb(224, 224, 224) 66%, rgb(117, 117, 117) 68%) !important",
       }}
     />
   );
