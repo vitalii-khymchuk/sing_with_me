@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const TabsMenu = ({ tabsArray }) => {
   console.log(tabsArray);
-  const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(1);
   return (
     <>
       <Tabs index={tabIndex} onChange={setTabIndex}>

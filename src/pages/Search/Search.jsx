@@ -14,11 +14,15 @@ import {
   removeFromSavedSelector,
 } from "modules/SavedLibrary";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const toast = useToast();
   const results = useSearchStore(resultsSelector);
   const resetResults = useSearchStore(resetResultsSelector);
+
+  const navigate = useNavigate();
+  const onSongCardClick = (id) => navigate(`/details/${id}`);
 
   useEffect(() => {
     if (results && results.length === 0) {
@@ -47,7 +51,6 @@ const Search = () => {
   };
 
   const savedSongs = useSavedLibStore(savedSongsSelector);
-
   const isMainInSaved = (id) => savedSongs.some((item) => item.id === id);
 
   return (
@@ -73,6 +76,7 @@ const Search = () => {
           resetResults={resetResults}
           toggleToSaved={toggleToSaved}
           isMainInSaved={isMainInSaved}
+          onSongCardClick={onSongCardClick}
         />
       )}
     </>

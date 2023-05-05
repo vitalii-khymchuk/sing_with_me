@@ -74,10 +74,11 @@ const useAuthStore = create(
                   state.userData = null;
                   state.isLoggedIn = false;
                 });
+              } else {
+                set((state) => {
+                  state.isError = error.message;
+                });
               }
-              set((state) => {
-                state.isError = error.message;
-              });
             }
           },
         };

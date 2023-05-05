@@ -15,10 +15,10 @@ const SongCard = ({
     release_date_for_display,
     id,
   },
-  onCardClick,
+  onSongCardClick,
 }) => {
   const onCardClickHandler = () => {
-    onCardClick(id);
+    onSongCardClick(id);
   };
   return (
     <Card
