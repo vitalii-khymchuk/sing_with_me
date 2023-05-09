@@ -5,6 +5,7 @@ import {
 } from "modules/AdvancedSongInfo/";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { AddToSavedBtn } from "modules/SavedLibrary";
 
 const Details = () => {
   const getSongInfo = useSongInfoStore(getSongInfoSelector);
@@ -14,7 +15,7 @@ const Details = () => {
     getSongInfo(id);
   }, [getSongInfo]);
 
-  return <TabsMenu />;
+  return <TabsMenu SaveResultBtn={AddToSavedBtn} />;
 };
 
 export { Details };

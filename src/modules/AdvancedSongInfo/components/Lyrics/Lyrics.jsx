@@ -9,8 +9,6 @@ const Lyrics = () => {
 
   const [isDocumentLoaded, setIsDocumentLoaded] = useState(false);
 
-  const [iframeHeight, setIframeHeight] = useState("800px");
-
   const iframeRef = useRef(null);
 
   useEffect(() => {
@@ -37,10 +35,15 @@ const Lyrics = () => {
         border: none !important;
         width: 100% !important;
       }
+      body {margin: 0;
+      font-family: sans-serif;
+      }
       a, p {
         color: white !important;
         text-align: center;
       }
+      .rg_embed_header {display: none}
+      .rg_embed_body {padding: 0 !important}
     `;
     iframeDocument.head.appendChild(style);
   }, []);

@@ -9,35 +9,20 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { RxReset } from "react-icons/rx";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const MainResult = ({
-  song: {
-    full_title,
-    header_image_url,
-    release_date_for_display,
-    header_image_thumbnail_url,
-    id,
-  },
-  inMainInSaved = () => false,
+  song,
+  SaveResultBtn = <></>,
   onMainCardClick = () => {},
   resetResults,
-  toggleToSaved,
 }) => {
-  const isInSaved = inMainInSaved(id);
-
-  const onAddToSavedClick = () => {
-    toggleToSaved(
-      {
-        full_title,
-        header_image_thumbnail_url,
-        release_date_for_display,
-        id,
-      },
-      isInSaved
-    );
-  };
-
+  const {
+    full_title,
+    header_image_thumbnail_url,
+    header_image_url,
+    release_date_for_display,
+    id,
+  } = song;
   const onMainCardClickHandler = () => {
     onMainCardClick(id);
   };
@@ -48,6 +33,7 @@ const MainResult = ({
           display="flex"
           justifyContent="center"
           onClick={onMainCardClickHandler}
+          _hover={{ cursor: "pointer" }}
         >
           <Image
             objectFit="cover"
@@ -70,26 +56,14 @@ const MainResult = ({
             spacing="3"
             alignItems="start"
             onClick={onMainCardClickHandler}
+            _hover={{ cursor: "pointer" }}
           >
             <Heading size="md">{full_title}</Heading>
             <Text color="gray.400">{`Release date: ${
               release_date_for_display ?? "not available"
             }`}</Text>
           </Stack>
-          <IconButton
-            aria-label="Add song to saved"
-            type="button"
-            bg="transparent"
-            // justifyContent="end"
-            icon={
-              isInSaved ? (
-                <AiFillHeart size="24" />
-              ) : (
-                <AiOutlineHeart size="24" />
-              )
-            }
-            onClick={onAddToSavedClick}
-          />
+          <SaveResultBtn dataToSave={song} />
         </Box>
       </CardBody>
     </Card>

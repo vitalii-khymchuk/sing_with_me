@@ -10,15 +10,20 @@ import { Navigate } from "react-router-dom";
 import { RxReset } from "react-icons/rx";
 import { InfoCard } from "../InfoCard";
 import { Lyrics } from "../Lyrics";
+import { Media } from "../Media";
 
-const TabsMenu = () => {
+const TabsMenu = ({ SaveResultBtn = <></> }) => {
   const TABS_ARRAY = [
     {
       label: <RxReset />,
       component: <Navigate to={-1} />,
     },
-    { label: <Text>Info</Text>, component: <InfoCard /> },
+    {
+      label: <Text>Info</Text>,
+      component: <InfoCard SaveResultBtn={SaveResultBtn} />,
+    },
     { label: <Text>Lyrics</Text>, component: <Lyrics /> },
+    { label: <Text>Media</Text>, component: <Media /> },
   ];
 
   return (

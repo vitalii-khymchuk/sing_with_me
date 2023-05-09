@@ -5,9 +5,8 @@ import { Box } from "@chakra-ui/react";
 const Results = ({
   results,
   resetResults = () => {},
-  toggleToSaved = () => {},
+  SaveResultBtn = <></>,
   onCardClick = () => {},
-  isMainInSaved,
 }) => {
   const slicedResults = results?.slice(1);
   return (
@@ -17,8 +16,7 @@ const Results = ({
           <MainResult
             song={results[0]}
             resetResults={resetResults}
-            toggleToSaved={toggleToSaved}
-            inMainInSaved={isMainInSaved}
+            SaveResultBtn={SaveResultBtn}
             onMainCardClick={onCardClick}
           />
         </Box>

@@ -28,6 +28,7 @@ const SongCard = ({
       h="7rem"
       _hover={{
         backgroundColor: "rgba(255, 255, 255, 0.8)",
+        cursor: "pointer",
       }}
       _focus={{
         backgroundColor: "rgba(255, 255, 255, 0.8)",

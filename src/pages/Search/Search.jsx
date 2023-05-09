@@ -7,12 +7,7 @@ import {
   resultsSelector,
   resetResultsSelector,
 } from "modules/Recorder";
-import {
-  useSavedLibStore,
-  addToSavedSelector,
-  savedSongsSelector,
-  removeFromSavedSelector,
-} from "modules/SavedLibrary";
+import { AddToSavedBtn } from "modules/SavedLibrary";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,25 +31,6 @@ const Search = () => {
     }
   }, [results, toast]);
 
-  const addToSaved = useSavedLibStore(addToSavedSelector);
-  const removeFromSaved = useSavedLibStore(removeFromSavedSelector);
-
-  const toggleToSaved = async (data, isInSaved) => {
-    if (isInSaved) {
-      await removeFromSaved(data.id);
-    } else {
-      await addToSaved(data);
-    }
-    toast({
-      title: `Song has ${isInSaved ? "removed from" : "added to"} saved`,
-      status: "info",
-      isClosable: true,
-    });
-  };
-
-  const savedSongs = useSavedLibStore(savedSongsSelector);
-  const isMainInSaved = (id) => savedSongs.some((item) => item.id === id);
-
   return (
     <>
       {(!results || results.length === 0) && (
@@ -76,8 +52,7 @@ const Search = () => {
         <Results
           results={results}
           resetResults={resetResults}
-          toggleToSaved={toggleToSaved}
-          isMainInSaved={isMainInSaved}
+          SaveResultBtn={AddToSavedBtn}
           onCardClick={navToDetails}
         />
       )}
