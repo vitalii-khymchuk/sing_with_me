@@ -1,0 +1,17 @@
+.carousel.carousel-slider {
+  overflow: visible !important;
+}
+.carousel .control-dots {
+  bottom: -40px;
+}
+
+.slide a {
+  border-bottom: 1px solid white;
+  color: bisque;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
