@@ -22,7 +22,9 @@ const Search = () => {
   const resetResults = useSearchStore(resetResultsSelector);
 
   const navigate = useNavigate();
-  const onSongCardClick = (id) => navigate(`/details/${id}`);
+  const navToDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
 
   useEffect(() => {
     if (results && results.length === 0) {
@@ -76,7 +78,7 @@ const Search = () => {
           resetResults={resetResults}
           toggleToSaved={toggleToSaved}
           isMainInSaved={isMainInSaved}
-          onSongCardClick={onSongCardClick}
+          onCardClick={navToDetails}
         />
       )}
     </>

@@ -12,24 +12,13 @@ import { RxReset } from "react-icons/rx";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import {
   useSongInfoStore,
-  getSongInfoSelector,
   songInfoSelector,
+  isSongInfoLoadingSelector,
 } from "modules/AdvancedSongInfo/store";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 const InfoCard = () => {
-  const getSongInfo = useSongInfoStore(getSongInfoSelector);
-  const { id } = useParams();
-
-  useEffect(() => {
-    console.log("query");
-    getSongInfo(id);
-  }, [getSongInfo]);
-
   const songInfo = useSongInfoStore(songInfoSelector);
-
-  if (!songInfo) return <></>;
+  const isLoading = useSongInfoStore(isSongInfoLoadingSelector);
 
   const {
     description,
@@ -40,9 +29,10 @@ const InfoCard = () => {
     title,
   } = songInfo;
 
-  console.log("description", description);
-  console.log("artist_names", artist_names);
-  console.log("embed_content", embed_content);
+  // console.log("description", description);
+  // console.log("artist_names", artist_names);
+  // console.log("embed_content", embed_content);
+  if (isLoading) return <p>loading...</p>;
 
   return (
     <Card maxW="sm" bgColor="transparent" color="white" p={2} boxShadow="none">

@@ -1,19 +1,20 @@
-import { TabsMenu, InfoCard, Lyrics } from "modules/AdvancedSongInfo/";
-import { RxReset } from "react-icons/rx";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Text } from "@chakra-ui/react";
+import {
+  TabsMenu,
+  useSongInfoStore,
+  getSongInfoSelector,
+} from "modules/AdvancedSongInfo/";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
-  const navigate = useNavigate();
-  const onBackClick = () => navigate(-1);
+  const getSongInfo = useSongInfoStore(getSongInfoSelector);
+  const { id } = useParams();
 
-  const TABS_ARRAY = [
-    { label: <RxReset onClick={onBackClick} />, component: <></> },
-    { label: <Text>Info</Text>, component: <InfoCard /> },
-    { label: <Text>Lyrics</Text>, component: <Lyrics /> },
-  ];
+  useEffect(() => {
+    getSongInfo(id);
+  }, [getSongInfo]);
 
-  return <TabsMenu tabsArray={TABS_ARRAY} />;
+  return <TabsMenu />;
 };
 
 export { Details };

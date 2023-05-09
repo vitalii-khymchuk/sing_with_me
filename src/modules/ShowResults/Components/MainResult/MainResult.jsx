@@ -20,6 +20,7 @@ const MainResult = ({
     id,
   },
   inMainInSaved = () => false,
+  onMainCardClick = () => {},
   resetResults,
   toggleToSaved,
 }) => {
@@ -36,10 +37,18 @@ const MainResult = ({
       isInSaved
     );
   };
+
+  const onMainCardClickHandler = () => {
+    onMainCardClick(id);
+  };
   return (
     <Card maxW="sm" bgColor="transparent" color="white" p={2} boxShadow="none">
       <CardBody p={2}>
-        <Box display="flex" justifyContent="center">
+        <Box
+          display="flex"
+          justifyContent="center"
+          onClick={onMainCardClickHandler}
+        >
           <Image
             objectFit="cover"
             boxSize="20rem"
@@ -56,7 +65,12 @@ const MainResult = ({
             icon={<RxReset size="24" />}
             onClick={resetResults}
           />
-          <Stack mt="6" spacing="3" alignItems="start">
+          <Stack
+            mt="6"
+            spacing="3"
+            alignItems="start"
+            onClick={onMainCardClickHandler}
+          >
             <Heading size="md">{full_title}</Heading>
             <Text color="gray.400">{`Release date: ${
               release_date_for_display ?? "not available"

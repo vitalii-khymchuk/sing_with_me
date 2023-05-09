@@ -1,7 +1,7 @@
 import { ListItem, List } from "@chakra-ui/react";
 import { SongCard } from "./SongCard";
 
-const SongList = ({ songs, footerText = "", onSongCardClick = () => {} }) => {
+const SongList = ({ songs, footerText = "", onCardClick = () => {} }) => {
   return (
     <List spacing="0.5rem">
       {songs.map((song) => {
@@ -12,7 +12,7 @@ const SongList = ({ songs, footerText = "", onSongCardClick = () => {} }) => {
           <ListItem key={song.id}>
             <SongCard
               song={{ ...song, release_date_for_display }}
-              onSongCardClick={onSongCardClick}
+              onCardClick={onCardClick}
             />
           </ListItem>
         );

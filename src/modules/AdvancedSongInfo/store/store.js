@@ -13,11 +13,13 @@ const queryHandler = async (set, callback) => {
     set((state) => {
       state.isLoading = true;
       state.isError = null;
+      state.songInfo = {};
     });
     await callback();
   } catch (error) {
     set((state) => {
       state.isError = error.message;
+      state.songInfo = {};
     });
   } finally {
     set((state) => {
@@ -31,13 +33,12 @@ const useSongInfoStore = create(
     immer(
       persist({ key: "songInfo" }, (set) => {
         return {
-          songInfo: null,
+          songInfo: {},
           isLoading: false,
           isError: null,
 
           getSongInfo: async (id) => {
             const getSongInfo = async () => {
-              console.log("where");
               const { data } = await getInfoQuery(id);
               set((state) => {
                 state.songInfo = data;

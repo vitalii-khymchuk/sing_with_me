@@ -6,13 +6,18 @@ import {
 import { SongList } from "components/SongList";
 import { useEffect } from "react";
 
-const SavedList = () => {
+const SavedList = ({ onCardClick = () => {} }) => {
   const savedSongs = useSavedLibStore(savedSongsSelector);
   const fetchSaved = useSavedLibStore(fetchSavedSelector);
   useEffect(() => {
     fetchSaved();
   }, [fetchSaved]);
-  console.log(savedSongs);
-  return <SongList songs={savedSongs ?? []} footerText="Release date:" />;
+  return (
+    <SongList
+      songs={savedSongs ?? []}
+      footerText="Release date:"
+      onCardClick={onCardClick}
+    />
+  );
 };
 export { SavedList };

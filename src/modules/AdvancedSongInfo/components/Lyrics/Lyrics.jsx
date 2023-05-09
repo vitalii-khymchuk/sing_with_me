@@ -2,36 +2,61 @@ import {
   useSongInfoStore,
   songInfoSelector,
 } from "modules/AdvancedSongInfo/store";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 
 const Lyrics = () => {
   const { embed_content } = useSongInfoStore(songInfoSelector);
 
+  const [isDocumentLoaded, setIsDocumentLoaded] = useState(false);
+
+  const [iframeHeight, setIframeHeight] = useState("800px");
+
   const iframeRef = useRef(null);
 
   useEffect(() => {
-    const iframeDocument = iframeRef.current.contentDocument;
+    if (iframeRef.current) {
+      iframeRef.current.addEventListener("load", () =>
+        setIsDocumentLoaded(true)
+      );
+    }
+  }, [iframeRef]);
 
-    iframeRef.current.style.height =
-      iframeRef.current.contentWindow.document.body.scrollHeight ?? 200 + "px";
-    // Create a style element and add your styles
+  const applyStyles = useCallback(() => {
+    const iframe = iframeRef.current;
+    const iframeDocument = iframeRef.current.contentDocument;
+    //sets full hight
+    iframe.style.height =
+      iframe.contentWindow.document.body.scrollHeight + "px";
+
+    //sets inline styles
     const style = iframeDocument.createElement("style");
     style.textContent = `
       body, div {
         background-color: transparent !important;
         overflow: hidden;
+        border: none !important;
+        width: 100% !important;
       }
       a, p {
         color: white !important;
         text-align: center;
       }
     `;
-
-    // Append the style element to the head of the iframe document
     iframeDocument.head.appendChild(style);
-  }, [embed_content]);
+  }, []);
+
+  useEffect(() => {
+    if (isDocumentLoaded && embed_content) {
+      applyStyles();
+    }
+  }, [isDocumentLoaded, applyStyles, embed_content]);
+
   return (
-    <iframe ref={iframeRef} srcDoc={embed_content} style={{ width: "100%" }} />
+    <iframe
+      ref={iframeRef}
+      srcDoc={embed_content}
+      style={{ width: "100%", display: isDocumentLoaded ? "block" : "none" }}
+    />
   );
 };
 

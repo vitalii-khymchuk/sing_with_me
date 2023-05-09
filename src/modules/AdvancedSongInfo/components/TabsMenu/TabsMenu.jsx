@@ -1,12 +1,29 @@
-import { Tab, Tabs, TabList, TabPanels, TabPanel } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Tab,
+  Tabs,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Text,
+} from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
+import { RxReset } from "react-icons/rx";
+import { InfoCard } from "../InfoCard";
+import { Lyrics } from "../Lyrics";
 
-const TabsMenu = ({ tabsArray }) => {
-  console.log(tabsArray);
-  const [tabIndex, setTabIndex] = useState(1);
+const TabsMenu = () => {
+  const TABS_ARRAY = [
+    {
+      label: <RxReset />,
+      component: <Navigate to={-1} />,
+    },
+    { label: <Text>Info</Text>, component: <InfoCard /> },
+    { label: <Text>Lyrics</Text>, component: <Lyrics /> },
+  ];
+
   return (
     <>
-      <Tabs index={tabIndex} onChange={setTabIndex}>
+      <Tabs defaultIndex={1} isLazy>
         <TabList
           gap={{ base: "20px" }}
           overflowX="scroll"
@@ -19,14 +36,20 @@ const TabsMenu = ({ tabsArray }) => {
             "-ms-overflow-style": "none",
             scrollbarWidth: "none",
           }}
+          position="absolute"
+          top="0"
+          left="0"
+          width="100vw"
         >
-          {tabsArray.map(({ label }) => (
-            <Tab>{label}</Tab>
+          {TABS_ARRAY.map(({ label }, index) => (
+            <Tab key={index} fontSize="lg">
+              {label}
+            </Tab>
           ))}
         </TabList>
-        <TabPanels>
-          {tabsArray.map(({ component }) => (
-            <TabPanel>{component}</TabPanel>
+        <TabPanels pt="44px">
+          {TABS_ARRAY.map(({ component }, index) => (
+            <TabPanel key={index}>{component}</TabPanel>
           ))}
         </TabPanels>
       </Tabs>

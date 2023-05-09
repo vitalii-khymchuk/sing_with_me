@@ -6,7 +6,7 @@ const Results = ({
   results,
   resetResults = () => {},
   toggleToSaved = () => {},
-  onSongCardClick = () => {},
+  onCardClick = () => {},
   isMainInSaved,
 }) => {
   const slicedResults = results?.slice(1);
@@ -19,6 +19,7 @@ const Results = ({
             resetResults={resetResults}
             toggleToSaved={toggleToSaved}
             inMainInSaved={isMainInSaved}
+            onMainCardClick={onCardClick}
           />
         </Box>
       )}
@@ -26,7 +27,7 @@ const Results = ({
         <Box py="0.7rem">
           <SongList
             songs={slicedResults}
-            onSongCardClick={onSongCardClick}
+            onCardClick={onCardClick}
             footerText="Release date:"
           />
         </Box>

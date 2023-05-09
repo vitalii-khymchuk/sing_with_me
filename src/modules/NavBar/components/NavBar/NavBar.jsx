@@ -13,24 +13,23 @@ const SITE_PAGES = [
 ];
 
 const NavBar = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
-    const page = SITE_PAGES.find(({ url }) => url === location.pathname);
+    const page = SITE_PAGES.find(({ url }) => url === pathname);
     if (page) {
       setTabIndex(page.index);
     } else {
       setTabIndex(4);
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   const handleTabsChange = (tabIndex) => {
     const { url } = SITE_PAGES.find(({ index }) => index === tabIndex);
     navigate(url);
   };
-
   return (
     <>
       <Tabs index={tabIndex} onChange={handleTabsChange}>
