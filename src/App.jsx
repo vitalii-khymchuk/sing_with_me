@@ -53,7 +53,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/",
+    basename: "/sing_with_me",
   }
 );
 
