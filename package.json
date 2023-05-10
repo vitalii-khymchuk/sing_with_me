@@ -1,6 +1,7 @@
 {
   "name": "sing_with_me",
   "version": "0.1.0",
+  "homepage": "https://vitalii-khymchuk.github.io/sing_with_me/",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
