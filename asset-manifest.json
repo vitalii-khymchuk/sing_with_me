@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1e792f4d.css",
+    "main.js": "/static/js/main.94e8bc1a.js",
+    "static/media/noun-search-music-4345472.svg": "/static/media/noun-search-music-4345472.fce6b656e040848a7ed2ad8ceeae73d1.svg",
+    "index.html": "/index.html",
+    "main.1e792f4d.css.map": "/static/css/main.1e792f4d.css.map",
+    "main.94e8bc1a.js.map": "/static/js/main.94e8bc1a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e792f4d.css",
+    "static/js/main.94e8bc1a.js"
+  ]
+}
