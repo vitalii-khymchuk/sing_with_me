@@ -15,7 +15,7 @@ import {
 import { CarouselSlider } from "../CarouselSlider";
 
 const InfoCard = ({ SaveResultBtn = <></> }) => {
-  const songInfo = useSongInfoStore(songInfoSelector);
+  const songInfo = useSongInfoStore(songInfoSelector) ?? {};
   const isLoading = useSongInfoStore(isSongInfoLoadingSelector);
 
   const {
@@ -26,9 +26,8 @@ const InfoCard = ({ SaveResultBtn = <></> }) => {
     title,
     album,
     id,
-    media,
   } = songInfo;
-  // console.log("artist_names", artist_names);
+
   const dataToSave = {
     full_title: `${title} by ${artist_names}`,
     header_image_thumbnail_url: header_image_url,

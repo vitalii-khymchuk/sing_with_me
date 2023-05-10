@@ -13,7 +13,7 @@ const Details = () => {
 
   useEffect(() => {
     getSongInfo(id);
-  }, [getSongInfo]);
+  }, [getSongInfo, id]);
 
   return <TabsMenu SaveResultBtn={AddToSavedBtn} />;
 };

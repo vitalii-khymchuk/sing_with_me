@@ -37,7 +37,7 @@ const NavBar = () => {
           gap={{ base: "20px" }}
           overflowX="scroll"
           overflowY="hidden"
-          borderBottom="1px"
+          borderTop="1px"
           sx={{
             "::-webkit-scrollbar": {
               display: "none",
@@ -47,7 +47,7 @@ const NavBar = () => {
           }}
         >
           {SITE_PAGES.map(({ name, url }) => (
-            <NavLink key={name} name={name} url={url} />
+            <NavLink key={name} name={name} />
           ))}
         </TabList>
       </Tabs>

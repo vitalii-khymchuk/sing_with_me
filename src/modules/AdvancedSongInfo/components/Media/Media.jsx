@@ -1,8 +1,8 @@
-import { HStack, Link } from "@chakra-ui/react";
+import { Stack, Link, Heading } from "@chakra-ui/react";
 import { useSongInfoStore, songInfoSelector } from "../../store";
 import YouTube from "react-youtube";
 import { BsSpotify } from "react-icons/bs";
-import { SiApplemusic } from "react-icons/si";
+import { RiSoundcloudLine } from "react-icons/ri";
 
 const Media = () => {
   const { media = [] } = useSongInfoStore(songInfoSelector);
@@ -11,17 +11,35 @@ const Media = () => {
   const videoId = youtube && youtube.url && youtube.url.split("v=")[1];
 
   const spotify = media.find(({ provider }) => provider === "spotify");
-  console.log(media);
+
+  const soundcloud = media.find(({ provider }) => provider === "soundcloud");
   return (
     <>
       {videoId && <YouTube videoId={videoId} opts={{ width: "100%" }} />}
-      <HStack pt="2rem" justifyContent="space-around">
+      <Stack pt="2rem" justifyContent="space-around">
         {spotify && (
-          <Link href={spotify.url} isExternal>
+          <Link
+            href={spotify.url}
+            isExternal
+            display="flex"
+            alignItems="center"
+          >
             <BsSpotify size="3rem" />
+            <Heading ml={6}>Listen on spotify</Heading>
           </Link>
         )}
-      </HStack>
+        {soundcloud && (
+          <Link
+            href={soundcloud.url}
+            isExternal
+            display="flex"
+            alignItems="center"
+          >
+            <RiSoundcloudLine size="3rem" />
+            <Heading ml={6}>Listen on soundcloud</Heading>
+          </Link>
+        )}
+      </Stack>
     </>
   );
 };

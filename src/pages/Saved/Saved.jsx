@@ -8,7 +8,7 @@ const Saved = () => {
     navigate(`/details/${id}`);
   };
   return (
-    <Box pt="0.7rem">
+    <Box pt="1rem">
       <SavedList onCardClick={navToDetails} />
     </Box>
   );

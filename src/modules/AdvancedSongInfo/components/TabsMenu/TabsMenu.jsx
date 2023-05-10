@@ -6,11 +6,14 @@ import {
   TabPanel,
   Text,
 } from "@chakra-ui/react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { RxReset } from "react-icons/rx";
 import { InfoCard } from "../InfoCard";
 import { Lyrics } from "../Lyrics";
 import { Media } from "../Media";
+import { Artists } from "../Artists";
+import { Related } from "../Related";
+import { useEffect, useState } from "react";
 
 const TabsMenu = ({ SaveResultBtn = <></> }) => {
   const TABS_ARRAY = [
@@ -24,11 +27,19 @@ const TabsMenu = ({ SaveResultBtn = <></> }) => {
     },
     { label: <Text>Lyrics</Text>, component: <Lyrics /> },
     { label: <Text>Media</Text>, component: <Media /> },
+    { label: <Text>Artists</Text>, component: <Artists /> },
+    { label: <Text>Related</Text>, component: <Related /> },
   ];
+
+  const { id } = useParams();
+  const [tabIndex, setTabIndex] = useState(1);
+  useEffect(() => {
+    setTabIndex(1);
+  }, [id]);
 
   return (
     <>
-      <Tabs defaultIndex={1} isLazy>
+      <Tabs isLazy index={tabIndex} onChange={setTabIndex}>
         <TabList
           gap={{ base: "20px" }}
           overflowX="scroll"

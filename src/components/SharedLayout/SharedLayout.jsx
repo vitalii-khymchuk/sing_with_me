@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import NavBar from "modules/NavBar";
-import { Container } from "@chakra-ui/react";
+import { Box, Container, Spacer } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 
 const SharedLayout = () => {
@@ -10,14 +10,18 @@ const SharedLayout = () => {
   const isDetailsPage = pathname.match(/^\/details\/\d+$/);
 
   return (
-    <>
-      {!isDetailsPage && <NavBar />}
-      <Suspense fallback={null}>
-        <Container>
-          <Outlet />
-        </Container>
-      </Suspense>
-    </>
+    <Box display="flex" flexDirection="column" minHeight="100vh">
+      <Box flexGrow={1}>
+        <Suspense fallback={null}>
+          <Container>
+            <Outlet />
+          </Container>
+        </Suspense>
+      </Box>
+      <Box position="sticky" bottom={0} bgColor="black">
+        <NavBar />
+      </Box>
+    </Box>
   );
 };
 

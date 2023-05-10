@@ -12,11 +12,15 @@ const Lyrics = () => {
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    const callback = () => setIsDocumentLoaded(true);
     if (iframeRef.current) {
-      iframeRef.current.addEventListener("load", () =>
-        setIsDocumentLoaded(true)
-      );
+      iframeRef.current.addEventListener("load", callback);
     }
+    return () => {
+      if (iframeRef.current) {
+        iframeRef.current.removeEventListener("load", callback);
+      }
+    };
   }, [iframeRef]);
 
   const applyStyles = useCallback(() => {
