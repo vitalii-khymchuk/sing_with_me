@@ -12,13 +12,14 @@ const Lyrics = () => {
   const iframeRef = useRef(null);
 
   useEffect(() => {
+    const iframe = iframeRef.current;
     const callback = () => setIsDocumentLoaded(true);
-    if (iframeRef.current) {
-      iframeRef.current.addEventListener("load", callback);
+    if (iframe) {
+      iframe.addEventListener("load", callback);
     }
     return () => {
-      if (iframeRef.current) {
-        iframeRef.current.removeEventListener("load", callback);
+      if (iframe) {
+        iframe.removeEventListener("load", callback);
       }
     };
   }, [iframeRef]);
@@ -63,6 +64,7 @@ const Lyrics = () => {
       ref={iframeRef}
       srcDoc={embed_content}
       style={{ width: "100%", display: isDocumentLoaded ? "block" : "none" }}
+      title="lyrics"
     />
   );
 };

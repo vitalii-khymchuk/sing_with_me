@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton } from "@chakra-ui/react";
 import { SoundRecorder } from "../../helpers";
 import { useSearchStore } from "../../store/store";

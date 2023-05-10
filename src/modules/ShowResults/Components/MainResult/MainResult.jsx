@@ -16,13 +16,7 @@ const MainResult = ({
   onMainCardClick = () => {},
   resetResults,
 }) => {
-  const {
-    full_title,
-    header_image_thumbnail_url,
-    header_image_url,
-    release_date_for_display,
-    id,
-  } = song;
+  const { full_title, header_image_url, release_date_for_display, id } = song;
   const onMainCardClickHandler = () => {
     onMainCardClick(id);
   };
