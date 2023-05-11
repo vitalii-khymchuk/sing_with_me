@@ -11,9 +11,9 @@ const SharedLayout = () => {
 
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh">
-      <Box flexGrow={1} overflowY="scroll" height="calc(100vh - 5rem)">
+      <Box flexGrow={1} overflowY="hidden" height="calc(100vh - 5rem)">
         <Suspense fallback={null}>
-          <Container>
+          <Container height="100%" overflowY="scroll">
             <Outlet />
           </Container>
         </Suspense>

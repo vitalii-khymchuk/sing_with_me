@@ -17,8 +17,8 @@ const Details = () => {
   }, [getSongInfo, id]);
 
   return (
-    <Box pt="44px" height="100%">
-      <Box>
+    <Box pt="44px" height="100%" overflow="hidden">
+      <Box overflowY="scroll" height="100%">
         <TabsMenu SaveResultBtn={AddToSavedBtn} />
       </Box>
     </Box>

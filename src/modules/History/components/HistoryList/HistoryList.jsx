@@ -7,10 +7,17 @@ import { useNavigate } from "react-router-dom";
 const HistoryList = ({ setResultsManually = () => {} }) => {
   const navigate = useNavigate();
   const [results, setResults] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    getHistoryQuery().then(({ data }) => {
-      setResults(data);
-    });
+    setIsLoading(true);
+    getHistoryQuery()
+      .then(({ data }) => {
+        setResults(data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const onCardClick = (id) => {
@@ -25,6 +32,7 @@ const HistoryList = ({ setResultsManually = () => {} }) => {
       songs={formattedResults}
       footerText="Found items:"
       onCardClick={onCardClick}
+      isLoading={isLoading}
     />
   );
 };
