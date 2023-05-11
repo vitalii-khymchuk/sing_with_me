@@ -18,7 +18,17 @@ const Details = () => {
 
   return (
     <Box pt="44px" height="100%" overflow="hidden">
-      <Box overflowY="scroll" height="100%">
+      <Box
+        overflowY="scroll"
+        height="100%"
+        sx={{
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
+          "-ms-overflow-style": "none",
+          scrollbarWidth: "none",
+        }}
+      >
         <TabsMenu SaveResultBtn={AddToSavedBtn} />
       </Box>
     </Box>

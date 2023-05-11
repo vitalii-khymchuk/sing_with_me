@@ -6,13 +6,30 @@ import {
   AccountInfo,
   signOutSelector,
 } from "modules/Authorization";
+import { useCallback, useEffect, useState } from "react";
 
 const Account = () => {
   const isLoggedIn = useAuthStore(isLoggedInSelector);
   const signOut = useAuthStore(signOutSelector);
+
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+  const setViewportHeight = useCallback(() => {
+    setWindowHeight(window.innerHeight);
+  }, [setWindowHeight]);
+
+  window.addEventListener("resize", setViewportHeight);
+
+  useEffect(
+    () => () => {
+      window.removeEventListener("resize", setViewportHeight);
+    },
+    [setViewportHeight]
+  );
+
   return (
     <>
-      <Stack alignItems="center">
+      <Stack alignItems="center" height="100%">
         <Box position="absolute" top="35%">
           {isLoggedIn ? (
             <AccountInfo />
@@ -23,8 +40,7 @@ const Account = () => {
             </Text>
           )}
         </Box>
-
-        <Box position="absolute" bottom="7rem">
+        <Box position="absolute" top={`calc(${windowHeight}px - 10rem)`}>
           {isLoggedIn ? (
             <Button
               variant="outline"
