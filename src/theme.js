@@ -26,13 +26,13 @@ const Heading = defineStyleConfig({
 
 const Button = defineStyleConfig({
   baseStyle: {
-    "button&:active, button&[data-active]": {
+    "&:active, button&[data-active]": {
       background: "transparent",
     },
-    "button&:hover, button&[data-hover]": {
+    "&:hover, button&[data-hover]": {
       background: "rgba(255, 255, 255, 0.2)",
     },
-    "button&:focus, button&[data-focus]": {
+    "&:focus, button&[data-focus]": {
       background: "transparent",
       border: "1px solid rgba(255, 255, 255, 0.2)",
     },

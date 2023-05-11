@@ -14,6 +14,8 @@ import {
 } from "modules/AdvancedSongInfo/store";
 import { CarouselSlider } from "../CarouselSlider";
 
+import { Skeleton, SkeletonText } from "@chakra-ui/react";
+
 const InfoCard = ({ SaveResultBtn = <></> }) => {
   const songInfo = useSongInfoStore(songInfoSelector) ?? {};
   const isLoading = useSongInfoStore(isSongInfoLoadingSelector);
@@ -36,54 +38,64 @@ const InfoCard = ({ SaveResultBtn = <></> }) => {
     id,
   };
 
-  if (isLoading) return <p>loading...</p>;
+  // if (isLoading) return <p>loading...</p>;
 
   return (
     <>
-      <Card
-        maxW="sm"
-        bgColor="transparent"
-        color="white"
-        p={2}
-        boxShadow="none"
-      >
-        <CardBody p={2}>
-          <Box display="flex" justifyContent="center">
-            <Image
-              objectFit="cover"
-              boxSize="20rem"
-              borderRadius="lg"
-              src={header_image_url}
-              alt={`${title} cover`}
-            />
-          </Box>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Stack mt="6" spacing="3">
-              <Heading
-                size="md"
-                px={0}
-                fontWeight="400"
-              >{`Name: ${title}`}</Heading>
-              <Heading
-                size="md"
-                px={0}
-                fontWeight="400"
-              >{`Artist: ${artist_names}`}</Heading>
-              <Text color="gray.400">{`Album: ${
-                album.name ?? "not available"
-              }`}</Text>
-              <Text color="gray.400">{`Release date: ${
-                release_date_for_display ?? "not available"
-              }`}</Text>
-            </Stack>
-            <SaveResultBtn dataToSave={dataToSave} />
-          </Box>
-        </CardBody>
-      </Card>
+      <Box display="flex" justifyContent="center">
+        <Card
+          maxW="sm"
+          bgColor="transparent"
+          color="white"
+          p={2}
+          boxShadow="none"
+        >
+          <CardBody p={2}>
+            <Box display="flex" justifyContent="center">
+              <Skeleton isLoaded={!isLoading} borderRadius="6px">
+                <Image
+                  objectFit="cover"
+                  boxSize="20rem"
+                  borderRadius="lg"
+                  src={header_image_url}
+                  alt={`${title} cover`}
+                />
+              </Skeleton>
+            </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Stack mt="6" spacing="3">
+                <SkeletonText isLoaded={!isLoading} borderRadius="6px">
+                  <Heading
+                    size="md"
+                    px={0}
+                    fontWeight="400"
+                  >{`Name: ${title}`}</Heading>
+                </SkeletonText>
+                <SkeletonText isLoaded={!isLoading} borderRadius="6px">
+                  <Heading
+                    size="md"
+                    px={0}
+                    fontWeight="400"
+                  >{`Artist: ${artist_names}`}</Heading>
+                </SkeletonText>
+                <Text color="gray.400">{`Album: ${
+                  album?.name ?? "not available"
+                }`}</Text>
+
+                <Text color="gray.400">{`Release date: ${
+                  release_date_for_display ?? "not available"
+                }`}</Text>
+              </Stack>
+
+              <SaveResultBtn dataToSave={dataToSave} />
+            </Box>
+          </CardBody>
+        </Card>
+      </Box>
       <Box pb="40px">
         <CarouselSlider description={description} />
       </Box>

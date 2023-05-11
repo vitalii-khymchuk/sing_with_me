@@ -5,6 +5,7 @@ import {
   TabPanels,
   TabPanel,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import { Navigate, useParams } from "react-router-dom";
 import { RxReset } from "react-icons/rx";
@@ -39,7 +40,7 @@ const TabsMenu = ({ SaveResultBtn = <></> }) => {
 
   return (
     <>
-      <Tabs isLazy index={tabIndex} onChange={setTabIndex}>
+      <Tabs isLazy index={tabIndex} onChange={setTabIndex} overflow="hidden">
         <TabList
           gap={{ base: "20px" }}
           overflowX="scroll"
@@ -63,7 +64,7 @@ const TabsMenu = ({ SaveResultBtn = <></> }) => {
             </Tab>
           ))}
         </TabList>
-        <TabPanels pt="44px">
+        <TabPanels overflowY="scroll">
           {TABS_ARRAY.map(({ component }, index) => (
             <TabPanel key={index}>{component}</TabPanel>
           ))}

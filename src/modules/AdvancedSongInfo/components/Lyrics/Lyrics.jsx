@@ -4,6 +4,8 @@ import {
 } from "modules/AdvancedSongInfo/store";
 import { useRef, useEffect, useState, useCallback } from "react";
 
+import { Box, SkeletonText } from "@chakra-ui/react";
+
 const Lyrics = () => {
   const { embed_content } = useSongInfoStore(songInfoSelector);
 
@@ -60,12 +62,63 @@ const Lyrics = () => {
   }, [isDocumentLoaded, applyStyles, embed_content]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      srcDoc={embed_content}
-      style={{ width: "100%", display: isDocumentLoaded ? "block" : "none" }}
-      title="lyrics"
-    />
+    <>
+      {!isDocumentLoaded && (
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          pt="3rem"
+        >
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+          <SkeletonText
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          ></SkeletonText>
+        </Box>
+      )}
+      <iframe
+        ref={iframeRef}
+        srcDoc={embed_content}
+        style={{ width: "100%", display: isDocumentLoaded ? "block" : "none" }}
+        title="lyrics"
+      />
+    </>
   );
 };
 

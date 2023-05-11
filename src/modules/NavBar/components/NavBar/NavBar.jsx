@@ -1,15 +1,36 @@
-import { Tabs, TabList } from "@chakra-ui/react";
-import { NavLink } from "../NavLink";
-import { useState } from "react";
+import { Tabs, TabList, Stack, Text, Box, Tab } from "@chakra-ui/react";
+import { Fragment, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { BiSearchAlt2, BiLibrary } from "react-icons/bi";
+import { VscHistory } from "react-icons/vsc";
+import { RiAccountCircleFill } from "react-icons/ri";
 
 const SITE_PAGES = [
-  { name: "Search", url: "/", index: 0 },
-  { name: "Library", url: "/library", index: 1 },
-  { name: "History", url: "/history", index: 2 },
-  { name: "Account", url: "/account", index: 3 },
-  { name: "", url: "", index: 4 },
+  {
+    icon: <BiSearchAlt2 size="2rem" />,
+    name: "Search",
+    url: "/",
+    index: 0,
+  },
+  {
+    icon: <BiLibrary size="2rem" />,
+    name: "Library",
+    url: "/library",
+    index: 1,
+  },
+  {
+    icon: <VscHistory size="2rem" />,
+    name: "History",
+    url: "/history",
+    index: 2,
+  },
+  {
+    icon: <RiAccountCircleFill size="2rem" />,
+    name: "Account",
+    url: "/account",
+    index: 3,
+  },
 ];
 
 const NavBar = () => {
@@ -22,7 +43,7 @@ const NavBar = () => {
     if (page) {
       setTabIndex(page.index);
     } else {
-      setTabIndex(4);
+      setTabIndex(-1);
     }
   }, [pathname]);
 
@@ -33,23 +54,41 @@ const NavBar = () => {
   return (
     <>
       <Tabs index={tabIndex} onChange={handleTabsChange}>
-        <TabList
-          gap={{ base: "20px" }}
-          overflowX="scroll"
-          overflowY="hidden"
-          borderTop="1px"
-          sx={{
-            "::-webkit-scrollbar": {
-              display: "none",
-            },
-            "-ms-overflow-style": "none",
-            scrollbarWidth: "none",
-          }}
-        >
-          {SITE_PAGES.map(({ name, url }) => (
-            <NavLink key={name} name={name} />
-          ))}
-        </TabList>
+        <Box display="flex" justifyContent="center" borderTop="1px">
+          <TabList
+            gap={{ base: "20px" }}
+            overflowX="scroll"
+            borderBottom="none"
+            overflowY="hidden"
+            sx={{
+              "::-webkit-scrollbar": {
+                display: "none",
+              },
+              "-ms-overflow-style": "none",
+              scrollbarWidth: "none",
+            }}
+          >
+            {SITE_PAGES.map(({ icon, name, url }, index) => (
+              <Tab key={url}>
+                <Stack>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    color={index === tabIndex ? "rgb(193, 4, 192)" : "inherit"}
+                  >
+                    {icon}
+                  </Box>
+                  <Text
+                    fontSize="sm"
+                    color={index === tabIndex ? "rgb(193, 4, 192)" : "inherit"}
+                  >
+                    {name}
+                  </Text>
+                </Stack>
+              </Tab>
+            ))}
+          </TabList>
+        </Box>
       </Tabs>
     </>
   );
