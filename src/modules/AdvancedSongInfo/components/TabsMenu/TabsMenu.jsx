@@ -5,7 +5,6 @@ import {
   TabPanels,
   TabPanel,
   Text,
-  Box,
 } from "@chakra-ui/react";
 import { Navigate, useParams } from "react-router-dom";
 import { RxReset } from "react-icons/rx";
