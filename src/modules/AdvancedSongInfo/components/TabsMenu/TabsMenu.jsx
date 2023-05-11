@@ -5,6 +5,7 @@ import {
   TabPanels,
   TabPanel,
   Text,
+  Box,
 } from "@chakra-ui/react";
 import { Navigate, useParams } from "react-router-dom";
 import { RxReset } from "react-icons/rx";
@@ -59,7 +60,9 @@ const TabsMenu = ({ SaveResultBtn = <></> }) => {
         >
           {TABS_ARRAY.map(({ label }, index) => (
             <Tab key={index} fontSize="lg">
-              {label}
+              <Box color={index === tabIndex ? "rgb(193, 4, 192)" : "inherit"}>
+                {label}
+              </Box>
             </Tab>
           ))}
         </TabList>
