@@ -2,16 +2,25 @@ import { FormControl, Input, Box, IconButton } from "@chakra-ui/react";
 import { Form } from "react-router-dom";
 import { useSearchStore } from "../../store/store";
 import { searchByTextSelector } from "modules/Recorder/store/selectors";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { useState } from "react";
 
 const SearchForm = () => {
   const searchByText = useSearchStore(searchByTextSelector);
+  const [query, setQuery] = useState("");
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    const query = e.target.query.value;
     searchByText(query);
-    e.target.reset();
+  };
+
+  const onInputChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+  };
+
+  const clearForm = () => {
+    setQuery("");
   };
 
   return (
@@ -19,10 +28,13 @@ const SearchForm = () => {
       <Form onSubmit={onFormSubmit}>
         <FormControl>
           <Input
+            pl="35px"
             type="text"
             name="query"
             placeholder="Type name of lyrics..."
             autoComplete="false"
+            onChange={onInputChange}
+            value={query}
           />
         </FormControl>
         <IconButton
@@ -30,7 +42,6 @@ const SearchForm = () => {
           type="submit"
           position="absolute"
           zIndex={3}
-          right="5px"
           top="50%"
           transform="translateY(-50%)"
           bg="transparent"
@@ -41,6 +52,25 @@ const SearchForm = () => {
             },
           }}
         />
+        {query && (
+          <IconButton
+            onClick={clearForm}
+            aria-label="Search"
+            type="button"
+            position="absolute"
+            zIndex={3}
+            right="5px"
+            top="50%"
+            transform="translateY(-50%)"
+            bg="transparent"
+            icon={<AiOutlineClose size="20" />}
+            style={{
+              ":hover": {
+                backgroundColor: "transparent",
+              },
+            }}
+          />
+        )}
       </Form>
     </Box>
   );
