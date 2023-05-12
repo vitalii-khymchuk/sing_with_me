@@ -22,9 +22,7 @@ const router = createBrowserRouter(
           async lazy() {
             let { Search } = await import("pages/Search");
             return {
-              Component: () => (
-                <PrivateRoute component={<Search />} redirectTo="/account" />
-              ),
+              Component: Search,
             };
           },
           loader: null,
@@ -58,9 +56,7 @@ const router = createBrowserRouter(
           async lazy() {
             let { Account } = await import("pages/Account");
             return {
-              Component: () => (
-                <PrivateRoute component={<Account />} redirectTo="/account" />
-              ),
+              Component: Account,
             };
           },
           loader: null,
@@ -70,9 +66,7 @@ const router = createBrowserRouter(
           async lazy() {
             let { Details } = await import("pages/Details");
             return {
-              Component: () => (
-                <PrivateRoute component={<Details />} redirectTo="/account" />
-              ),
+              Component: Details,
             };
           },
           loader: null,
