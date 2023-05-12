@@ -12,6 +12,10 @@ const SavedList = ({ onCardClick = () => {} }) => {
   const fetchSaved = useSavedLibStore(fetchSavedSelector);
   const isLoading = useSavedLibStore(isSavedSongsLoadingSelector);
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     fetchSaved();
   }, [fetchSaved]);
   return (

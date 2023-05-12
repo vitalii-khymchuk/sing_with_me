@@ -1,8 +1,3 @@
-import { Search } from "pages/Search/";
-import { Account } from "pages/Account";
-import { History } from "pages/History";
-import { Saved } from "pages/Saved";
-import { Details } from "pages/Details";
 import { SharedLayout } from "components/SharedLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
@@ -24,29 +19,62 @@ const router = createBrowserRouter(
       children: [
         {
           index: true,
-          element: <Search />,
+          async lazy() {
+            let { Search } = await import("pages/Search");
+            return {
+              Component: () => (
+                <PrivateRoute component={<Search />} redirectTo="/account" />
+              ),
+            };
+          },
           loader: null,
         },
         {
           path: "/library",
-          element: <PrivateRoute component={<Saved />} redirectTo="/account" />,
+          async lazy() {
+            let { Saved } = await import("pages/Saved");
+            return {
+              Component: () => (
+                <PrivateRoute component={<Saved />} redirectTo="/account" />
+              ),
+            };
+          },
           loader: null,
         },
         {
           path: "/history",
-          element: (
-            <PrivateRoute component={<History />} redirectTo="/account" />
-          ),
+          async lazy() {
+            let { History } = await import("pages/History");
+            return {
+              Component: () => (
+                <PrivateRoute component={<History />} redirectTo="/account" />
+              ),
+            };
+          },
           loader: null,
         },
         {
           path: "/account",
-          element: <Account />,
+          async lazy() {
+            let { Account } = await import("pages/Account");
+            return {
+              Component: () => (
+                <PrivateRoute component={<Account />} redirectTo="/account" />
+              ),
+            };
+          },
           loader: null,
         },
         {
           path: "/details/:id",
-          element: <Details />,
+          async lazy() {
+            let { Details } = await import("pages/Details");
+            return {
+              Component: () => (
+                <PrivateRoute component={<Details />} redirectTo="/account" />
+              ),
+            };
+          },
           loader: null,
         },
       ],
@@ -61,11 +89,7 @@ const App = () => {
   const isLoggedIn = useAuthStore(isLoggedInSelector);
   const getCurrent = useAuthStore(getCurrentSelector);
   const token = useAuthStore(tokenSelector);
-  useEffect(() => {
-    if (token) {
-      setBearer(token);
-    }
-  }, [token]);
+  token && setBearer(token);
 
   useEffect(() => {
     if (isLoggedIn) {

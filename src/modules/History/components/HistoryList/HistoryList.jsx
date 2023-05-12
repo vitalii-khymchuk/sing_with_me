@@ -18,6 +18,10 @@ const HistoryList = ({ setResultsManually = () => {} }) => {
       .finally(() => {
         setIsLoading(false);
       });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   const onCardClick = (id) => {

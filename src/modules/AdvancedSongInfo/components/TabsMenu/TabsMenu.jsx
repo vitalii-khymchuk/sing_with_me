@@ -50,7 +50,7 @@ const TabsMenu = ({ SaveResultBtn = <></> }) => {
             "::-webkit-scrollbar": {
               display: "none",
             },
-            "-ms-overflow-style": "none",
+            msOverflowStyle: "none",
             scrollbarWidth: "none",
           }}
           position="absolute"
