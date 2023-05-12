@@ -4,7 +4,7 @@ import { History } from "pages/History";
 import { Saved } from "pages/Saved";
 import { Details } from "pages/Details";
 import { SharedLayout } from "components/SharedLayout";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { PrivateRoute } from "PrivateRoute";
 import {
   useAuthStore,
@@ -15,7 +15,7 @@ import {
 import { useEffect } from "react";
 import { setBearer } from "config/axiosConfig";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       path: "/",
