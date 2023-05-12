@@ -1,4 +1,4 @@
-Sing with me - web application created to make music serch more convinient.
+Sing with me - web application created to make music search more convinient.
 It supports:
 1. Search by listening (with microphone) or by text (you can type name of song, or some lyrics).
 2. Rich information about song (exept main info, it includes lyrics, anotations, mediaresources, authors, related songs).
