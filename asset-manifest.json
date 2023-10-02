@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/sing_with_me/static/js/main.5e3ebb76.js",
+    "main.js": "/sing_with_me/static/js/main.e3423233.js",
     "static/js/992.ab1619da.chunk.js": "/sing_with_me/static/js/992.ab1619da.chunk.js",
     "static/js/825.e8a413f3.chunk.js": "/sing_with_me/static/js/825.e8a413f3.chunk.js",
     "static/js/53.7eb04ccf.chunk.js": "/sing_with_me/static/js/53.7eb04ccf.chunk.js",
@@ -9,11 +9,11 @@
     "static/js/515.e11affe3.chunk.js": "/sing_with_me/static/js/515.e11affe3.chunk.js",
     "static/js/262.9089cb7f.chunk.js": "/sing_with_me/static/js/262.9089cb7f.chunk.js",
     "static/js/213.9f0de465.chunk.js": "/sing_with_me/static/js/213.9f0de465.chunk.js",
-    "static/js/433.d2237446.chunk.js": "/sing_with_me/static/js/433.d2237446.chunk.js",
+    "static/js/433.85f99b4f.chunk.js": "/sing_with_me/static/js/433.85f99b4f.chunk.js",
     "static/js/908.9858854a.chunk.js": "/sing_with_me/static/js/908.9858854a.chunk.js",
     "static/media/noun-search-music-4345472.svg": "/sing_with_me/static/media/noun-search-music-4345472.fce6b656e040848a7ed2ad8ceeae73d1.svg",
     "index.html": "/sing_with_me/index.html",
-    "main.5e3ebb76.js.map": "/sing_with_me/static/js/main.5e3ebb76.js.map",
+    "main.e3423233.js.map": "/sing_with_me/static/js/main.e3423233.js.map",
     "992.ab1619da.chunk.js.map": "/sing_with_me/static/js/992.ab1619da.chunk.js.map",
     "825.e8a413f3.chunk.js.map": "/sing_with_me/static/js/825.e8a413f3.chunk.js.map",
     "53.7eb04ccf.chunk.js.map": "/sing_with_me/static/js/53.7eb04ccf.chunk.js.map",
@@ -22,10 +22,10 @@
     "515.e11affe3.chunk.js.map": "/sing_with_me/static/js/515.e11affe3.chunk.js.map",
     "262.9089cb7f.chunk.js.map": "/sing_with_me/static/js/262.9089cb7f.chunk.js.map",
     "213.9f0de465.chunk.js.map": "/sing_with_me/static/js/213.9f0de465.chunk.js.map",
-    "433.d2237446.chunk.js.map": "/sing_with_me/static/js/433.d2237446.chunk.js.map",
+    "433.85f99b4f.chunk.js.map": "/sing_with_me/static/js/433.85f99b4f.chunk.js.map",
     "908.9858854a.chunk.js.map": "/sing_with_me/static/js/908.9858854a.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.5e3ebb76.js"
+    "static/js/main.e3423233.js"
   ]
 }
